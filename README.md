@@ -27,8 +27,6 @@
     - 기본적으로 정의가 되어있는 ThreadPool이 있을 것이다. 그 값을 참고하여 설정을 하는 것이 일반적이다.
 - IllegalArgumentException, NullPointException 의 발생을 주의해야한다. (아래의 조건 중 하나라도 성립하면 exception이 발생한다.)
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/40c0edcd-325c-44c0-9b9b-5bb33d3858a8/Untitled.png)
-    
     **IllegalArgumentException - if one of ter following holds**
     
     - corePoolSize < 0 : 메인 스레드가 스레드풀의 테스크를 위임하는데 스레드풀에 스레드가 없는 것이다.
