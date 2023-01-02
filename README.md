@@ -2,7 +2,7 @@
 비동기 프로그래밍 구현해보기
 
 
-### 비동기 프로그래밍 개념
+### 💡 비동기 프로그래밍 개념
 - Async 한 통신
 - 실시간성 응답을 필요로 하지 않는 상황에서 사용
     - ex) notification, email 전송(회원가입 후 축하합니다.), push 알림
@@ -12,7 +12,7 @@
     - 비동기는 Main Thread가 아닌 Sub Thread에서 작업이 진행한다.
     - java에서는 threadPool을 생성하여 async 작업을 처리한다.
 
-### ThreadPool 설정 시 다양한 옵션들 (https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ThreadPoolExecutor.html)
+### 💡 ThreadPool 설정 시 다양한 옵션들 (https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ThreadPoolExecutor.html)
 - CorePoolSize : 최소 몇개의 threadPool을 갖고 있을 것이냐?
     - ex : 이를 5개로 설정하면 사용하든 안하든 5개 thread는 무조건 resource를 정의하고 있다.
 - MaxPoolSize : 최대 thread를 몇 개까지 할당할것인가? (무한정 thread를 할당할 수 없다.)
@@ -21,7 +21,7 @@
 - KeepAliveTime : 최소와 최대의 thread 개수를 왔다갔다 할텐데 CorePoolSize 보다 더 많은 thread를 할당하게 되면 언젠간 반환하게 되는데 반환하는 조건으로 KeepAliveTime을 설정한다. 내가 지정한 시간만큼 thread를 사용하지 않으면 반환한다.
 - unit : KeepAliveTime이 시간인지 분인지 초인지를 설정하는 단위
 
-### ThreadPool 생성시 주의해야 할 부분
+### 💡 ThreadPool 생성시 주의해야 할 부분
 - CorePoolSize 값을 너무 크게 설정할 경우 side effect 고려해보기
     - 그 수 만큼은 자원을 점유하고 있기 때문에 너무 큰값을 설정하게 되면 이 threadPool은 잘 사용되지 않고, 혹 사용이 되더라도 그만큼의 Thread가 필요없는데도 불구하고 많은 스레드를 점유하고 있을 수 있기 때문에 적절하게 설정해야 한다.
     - 기본적으로 정의가 되어있는 ThreadPool이 있을 것이다. 그 값을 참고하여 설정을 하는 것이 일반적이다.
@@ -38,7 +38,7 @@
     
     - workQueue가 null일경우에는 워크큐.push, put 이런 명령어를 사용할텐데 정의되어있지 않는 큐에다가 값을 넣게 되면 NPE가 발생한다.
     
-### 비동기 프로그래밍 주의사항
+### 💡 비동기 프로그래밍 주의사항
 - 스프링 컨테이너에 등록 된 빈이 아니면 비동기가 되지 않는다. (@Async를 사용한 인스턴스를 빈을 주입하는 것이 아닌 인스턴스를 직접 생성한다. ex) new XXX();
 - 이미 빈을 가져온 상태에서 내부메소드로 직접 접근하려고 하면 비동기가 되지 않는다.(해당 빈을 프록시 객체로 랩핑할 수 없기 때문이다.)
 - Async 프로그래밍을 할 때에는 반드시 빈을 주입받아야 한다.
